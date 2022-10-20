@@ -37,11 +37,19 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE/head
           ./mo-service -launch ./etc/launch-tae-logservice/launch.toml &>mo-service.log &
-      - name: Clone test-tool repository
+          
+      - name: Clone mo-tester repository
         uses: actions/checkout@v2
         with:
           repository: matrixorigin/mo-tester
           path: ./mo-tester
+          ref: main
+      
+      - name: Clone mo-tpch repository
+        uses: actions/checkout@v2
+        with:
+          repository: aressu1985/mo-tpch
+          path: ./mo-tpch
           ref: main
 
       - name: Set up JDK 8 for x64
@@ -56,9 +64,19 @@ jobs:
         run: |
           export LC_ALL="C.UTF-8"
           locale
-          sleep 120s
+          #sleep 120s
           cd $GITHUB_WORKSPACE/mo-tester
-          ./run.sh -n -g -p $GITHUB_WORKSPACE/head/test/cases 2>&1
+          #./run.sh -n -g -p $GITHUB_WORKSPACE/head/test/cases 2>&1
+          
+      - name: Start BVT Test
+        id: tpch_on_pr_version
+        run: |
+          export LC_ALL="C.UTF-8"
+          locale
+          sleep 60s
+          cd $GITHUB_WORKSPACE/mo-tpch
+          ./run.sh -s 0.1  
+          
       - name: Check mo-service Status
         if: ${{ always() && !cancelled() }}
         run: |
