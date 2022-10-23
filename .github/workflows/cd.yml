@@ -68,7 +68,7 @@ jobs:
           cd $GITHUB_WORKSPACE/mo-tester
           #./run.sh -n -g -p $GITHUB_WORKSPACE/head/test/cases 2>&1
           
-      - name: Start BVT Test
+      - name: Start TPCH Test
         id: tpch_on_pr_version
         run: |
           export LC_ALL="C.UTF-8"
