@@ -89,7 +89,7 @@ jobs:
           locale
           sleep 60s
           cd $GITHUB_WORKSPACE/mo-tpch
-          ./run.sh -s 0.1  
+          #./run.sh -s 0.1  
           
       - name: Start SYSBENCH Test
         id: sysbench_on_pr_version
@@ -98,8 +98,8 @@ jobs:
           locale
           sleep 60s
           cd $GITHUB_WORKSPACE/mo-load
-          ./start.sh -m SYSBENCH -n 10 -s 100 
-          ./start.sh -d 1 -t 1 -c cases/sysbench/point_select_10_100
+          #./start.sh -m SYSBENCH -n 10 -s 100 
+          #./start.sh -d 1 -t 1 -c cases/sysbench/point_select_10_100
           
       - name: Start LOAD DATA Test
         id: loaddata_on_pr_version
