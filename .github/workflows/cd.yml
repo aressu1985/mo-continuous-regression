@@ -33,7 +33,8 @@ jobs:
          cd $GITHUB_WORKSPACE/head
          commit_id=$(git rev-parse --short HEAD)
          echo $commit_id
-         echo "commit_id="$commit_id >> $GITHUB_ENV
-         echo '**'${{ env.commit_id }}
+         echo "commit_id=$commit_id"
+         echo "commit_id=$commit_id" >> $GITHUB_ENV
+         echo '${{ env.commit_id }} 66'
           
           
