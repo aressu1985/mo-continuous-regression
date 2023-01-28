@@ -35,6 +35,6 @@ jobs:
          echo $commit_id
          echo "commit_id=$commit_id"
          echo "commit_id=$commit_id" >> $GITHUB_ENV
-         echo '${{ env.commit_id }} 66'
+         echo ${{ env.commit_id }}
           
           
