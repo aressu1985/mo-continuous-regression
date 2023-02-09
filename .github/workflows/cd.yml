@@ -17,8 +17,17 @@ jobs:
     name: test
     timeout-minutes: 30
     steps: 
+      - name: Clone mo-nightly-regression Repo
+        uses: actions/checkout@v2
+        with:
+          repository: aressu1985/mo-continuous-regression
+          path: ./mo-nightly-regression
+          ref: main
       - name: test
         run: |
           echo $GITHUB_WORKSPACE
           echo "$GITHUB_WORKSPACE"
+          cd $GITHUB_WORKSPACE/mo-continuous-regression
+          sed -i '/  LOAD:*/c\  LOAD: "$GITHUB_WORKSPACE\/mo-load-data\/report"' config.yml
+          cat config.yml
           
