@@ -1,0 +1,16 @@
+#database config
+DBInfo:
+  host: "127.0.0.1"
+  port: 3306
+  user: "dump"
+  password: "111"
+  database: "mobenbase"
+
+# Result files path
+FilePath:
+  SSB: "/Users/sudong/Program/MatrixOrigin/mo-ssb/report"
+  TPCH: "/Users/sudong/Program/MatrixOrigin/mo-tpch/report"
+  SYSBENCH: "/Users/sudong/Program/MatrixOrigin/mo-load/report"
+  TPCC: "/Users/sudong/Program/aressu1985/mo-tpcc/report"
+  LOAD: "/Users/sudong/Program/MatrixOrigin/mo-load-data/report"
+
