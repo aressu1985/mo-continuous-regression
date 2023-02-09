@@ -12,35 +12,6 @@ on:
   
 
 jobs:
-  bvt-linux-x86:
-    runs-on: ubuntu-latest
-    name: BVT Test on Ubuntu/x64
-    timeout-minutes: 30
-    
-    steps:
-      - name: checkout head
-        uses: actions/checkout@v2
-        with:
-          path: ./head
-          repository: matrixorigin/matrixone
-          ref: main
-      
-      - name: Set up Go
-        uses: ./head/.github/actions/setup_env
-
-      - name: Build MatrixOne
-        run: |
-          cd $GITHUB_WORKSPACE/head
-          commit_id=$(git rev-parse --short HEAD)
-          echo $commit_id
-          echo "commit_id=$commit_id"
-          echo "commit_id=$commit_id" >> $GITHUB_ENV
-          echo ${{ env.commit_id }}
-          
-      - name: test
-        run: |
-          echo $commit_id
-          
   test:
     runs-on: ubuntu-latest
     name: test
@@ -48,5 +19,6 @@ jobs:
     steps: 
       - name: test
         run: |
-          echo $commit_id
+          echo $GITHUB_WORKSPACE
+          echo "$GITHUB_WORKSPACE"
           
